@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap');
+
+:root {
+  /* ---- Paleta: noite + emblema de ordem ---- */
+  --night: #0b1224;        /* fundo — céu noturno */
+  --surface: #131b36;      /* cards / superfícies elevadas */
+  --surface-raised: #1a2444;
+  --line: #2a3560;         /* bordas hairline */
+  --gold: #d4af6a;         /* insígnia, acento principal */
+  --gold-dim: #a98a52;
+  --starlight: #f2f0e9;    /* texto principal, cor das estrelas */
+  --slate: #8b93ab;        /* texto secundário */
+  --ember: #a4394a;        /* alertas / ênfase (vermelho de ordem) */
+  --success: #6ba888;
+
+  --font-display: 'Cinzel', serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 14px;
+
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: var(--night);
+  color: var(--starlight);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, .display {
+  font-family: var(--font-display);
+  letter-spacing: 0.02em;
+  font-weight: 600;
+  margin: 0;
+}
+
+a { color: inherit; }
+
+button, input, select, textarea {
+  font-family: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.mono { font-family: var(--font-mono); }
+
+/* ---- Botões ---- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, transform 0.05s ease;
+}
+
+.btn:active { transform: translateY(1px); }
+
+.btn-primary {
+  background: var(--gold);
+  color: #241a0a;
+}
+.btn-primary:hover { background: #e0bd7c; }
+.btn-primary:disabled { background: var(--gold-dim); cursor: not-allowed; }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--starlight);
+  border-color: var(--line);
+}
+.btn-ghost:hover { border-color: var(--gold-dim); }
+
+/* ---- Campos de formulário ---- */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-align: left;
+}
+
+.field label {
+  font-size: 0.8rem;
+  color: var(--slate);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.field input {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  color: var(--starlight);
+  font-size: 0.95rem;
+}
+
+.field input::placeholder { color: #5a6280; }
+
+.field input:focus {
+  border-color: var(--gold-dim);
+}
+
+.form-error {
+  background: rgba(164, 57, 74, 0.15);
+  border: 1px solid var(--ember);
+  color: #f2c9cf;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+}
+
+.form-success {
+  background: rgba(107, 168, 136, 0.15);
+  border: 1px solid var(--success);
+  color: #cdeadd;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+}
+
+/* ---- Card genérico ---- */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+}

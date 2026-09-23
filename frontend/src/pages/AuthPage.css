@@ -1,0 +1,99 @@
+.auth-screen {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(ellipse at 50% -10%, #17204a 0%, var(--night) 55%);
+}
+
+/* Campo de estrelas sutil, com a constelação do Cruzeiro do Sul entre elas */
+.auth-starfield {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(1.5px 1.5px at 20% 30%, rgba(242,240,233,0.7), transparent),
+    radial-gradient(1px 1px at 75% 15%, rgba(242,240,233,0.5), transparent),
+    radial-gradient(1.5px 1.5px at 60% 70%, rgba(242,240,233,0.6), transparent),
+    radial-gradient(1px 1px at 85% 55%, rgba(242,240,233,0.4), transparent),
+    radial-gradient(1.5px 1.5px at 12% 80%, rgba(242,240,233,0.5), transparent),
+    radial-gradient(1px 1px at 40% 12%, rgba(242,240,233,0.4), transparent),
+    radial-gradient(1.5px 1.5px at 92% 85%, rgba(242,240,233,0.5), transparent);
+  background-size: 100% 100%;
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+.auth-card {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  padding: 40px 32px;
+  text-align: center;
+  backdrop-filter: blur(2px);
+}
+
+.auth-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+.auth-title {
+  font-size: 1.35rem;
+  line-height: 1.3;
+  color: var(--starlight);
+}
+
+.auth-subtitle {
+  margin: 0;
+  color: var(--slate);
+  font-size: 0.85rem;
+  letter-spacing: 0.03em;
+}
+
+.auth-tabs {
+  display: flex;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 4px;
+  margin-bottom: 24px;
+  gap: 4px;
+}
+
+.auth-tab {
+  flex: 1;
+  padding: 9px 0;
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-sm);
+  color: var(--slate);
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.auth-tab.is-active {
+  background: var(--surface-raised);
+  color: var(--gold);
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.auth-submit {
+  margin-top: 4px;
+  width: 100%;
+}
+
+@media (max-width: 420px) {
+  .auth-card { padding: 32px 22px; }
+}

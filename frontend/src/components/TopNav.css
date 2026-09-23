@@ -1,0 +1,107 @@
+.topnav {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+}
+
+.topnav-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.topnav-versao {
+  color: var(--gold-dim);
+  font-size: 0.75rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 4px 8px;
+  flex-shrink: 0;
+}
+
+.topnav-modulos {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.topnav-modulos::-webkit-scrollbar { display: none; }
+
+.topnav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  color: var(--slate);
+  text-decoration: none;
+  font-size: 0.68rem;
+  white-space: nowrap;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.topnav-item:hover {
+  background: var(--surface-raised);
+  color: var(--starlight);
+}
+
+.topnav-item.is-active {
+  color: var(--gold);
+  background: rgba(212, 175, 106, 0.12);
+}
+
+.topnav-item-label {
+  letter-spacing: 0.01em;
+}
+
+.topnav-toggle {
+  display: none;
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--starlight);
+  border-radius: var(--radius-sm);
+  padding: 8px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+/* ---- Mobile: ícones viram uma lista vertical recolhível ---- */
+@media (max-width: 720px) {
+  .topnav-toggle {
+    display: inline-flex;
+  }
+
+  .topnav-modulos {
+    display: none;
+  }
+
+  .topnav-modulos.is-aberto {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--surface);
+    border-bottom: 1px solid var(--line);
+    padding: 8px;
+    gap: 2px;
+  }
+
+  .topnav-modulos.is-aberto .topnav-item {
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 12px;
+    padding: 12px;
+    font-size: 0.85rem;
+  }
+}
