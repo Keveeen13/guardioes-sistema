@@ -107,7 +107,5 @@ create table if not exists public.eventos_calendario (
   criado_em timestamptz not null default now()
 );
 
-create table if not exists public.tarefas (
-  id uuid primary key default uuid_generate_v4(),
-  criado_em timestamptz not null default now()
-);
+-- Quadro de Tarefas (Kanban): rode 002_quadro_de_tarefas.sql logo em
+-- seguida deste script para criar as tabelas quadros/colunas/tarefas.

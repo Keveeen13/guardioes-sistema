@@ -4,6 +4,19 @@ import { requireAuth } from '../middleware/auth.js';
 
 const router = Router();
 
+// GET /api/profile/membros — lista enxuta de todos os membros do capítulo
+// (usada para preencher seletores de "responsável" em tarefas, eventos etc.)
+router.get('/membros', requireAuth, async (req, res) => {
+  const { data, error } = await supabaseAdmin
+    .from('profiles')
+    .select('id, nome_completo, cargo')
+    .eq('ativo', true)
+    .order('nome_completo', { ascending: true });
+
+  if (error) return res.status(500).json({ error: 'Erro ao buscar membros.' });
+  return res.json({ membros: data });
+});
+
 // GET /api/profile — dados do usuário logado
 router.get('/', requireAuth, async (req, res) => {
   const { data, error } = await supabaseAdmin

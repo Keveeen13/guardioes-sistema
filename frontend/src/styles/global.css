@@ -104,7 +104,9 @@ button, input, select, textarea {
   letter-spacing: 0.06em;
 }
 
-.field input {
+.field input,
+.field select,
+.field textarea {
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--radius-sm);
@@ -113,11 +115,53 @@ button, input, select, textarea {
   font-size: 0.95rem;
 }
 
-.field input::placeholder { color: #5a6280; }
+.field textarea {
+  resize: vertical;
+  min-height: 72px;
+}
 
-.field input:focus {
+.field select {
+  appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, var(--slate) 50%),
+    linear-gradient(135deg, var(--slate) 50%, transparent 50%);
+  background-position: calc(100% - 18px) center, calc(100% - 13px) center;
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+}
+
+.field input::placeholder,
+.field textarea::placeholder { color: #5a6280; }
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
   border-color: var(--gold-dim);
 }
+
+/* ---- Badges de prioridade (usados no Quadro de Tarefas) ---- */
+.badge-prioridade {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 3px 8px;
+  border-radius: 999px;
+}
+
+.badge-prioridade::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.badge-prioridade.baixa { color: var(--success); background: rgba(107, 168, 136, 0.14); }
+.badge-prioridade.media { color: var(--gold); background: rgba(212, 175, 106, 0.14); }
+.badge-prioridade.alta { color: #e2949e; background: rgba(164, 57, 74, 0.16); }
 
 .form-error {
   background: rgba(164, 57, 74, 0.15);

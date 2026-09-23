@@ -29,8 +29,13 @@ frontend/                backend/                 supabase/schema.sql
 2. No painel do projeto, vá em **SQL Editor** → cole o conteúdo de
    `supabase/schema.sql` → **Run**. Isso cria a tabela `profiles`, os cargos
    do DeMolay, o trigger de criação automática de perfil e as tabelas-base
-   dos próximos módulos (tesouraria, documentos, calendário, tarefas).
-3. Em **Settings → API**, copie:
+   dos próximos módulos (tesouraria, documentos, calendário).
+3. Ainda no **SQL Editor**, rode também `supabase/002_quadro_de_tarefas.sql`
+   → **Run**. Isso cria as tabelas do Quadro de Tarefas (quadros, colunas,
+   tarefas). Se seu projeto já existia antes deste módulo, esse script
+   substitui a tabela `tarefas` vazia da Fase 1 pela versão completa —
+   não tem problema rodar mesmo em um projeto já em uso.
+4. Em **Settings → API**, copie:
    - `Project URL`
    - `anon public` key
    - `service_role` key (mantenha em segredo — só vai para o backend)
@@ -92,14 +97,19 @@ supabase/
   schema.sql          tabelas, cargos, trigger de perfil e RLS
 ```
 
+## Módulos já entregues
+
+- **Autenticação** — login/cadastro com Supabase Auth.
+- **Quadro de Tarefas (Kanban)** — múltiplos quadros (projetos), colunas
+  editáveis, cartões com responsável/prioridade/prazo e arrastar-e-soltar
+  entre colunas. Rotas em `backend/src/routes/boards.routes.js`.
+
 ## Próximas fases sugeridas
 
 1. **Tesouraria** — lançamentos, mensalidades por membro, saldo e relatórios.
-2. **Quadro de Tarefas** — colunas Kanban (A fazer / Em andamento / Concluído)
-   com cartões arrastáveis, ligado à tabela `tarefas`.
-3. **Calendário** — eventos do capítulo com confirmação de presença.
-4. **Documentos** — upload de atas/arquivos via Supabase Storage.
-5. **Configurações** — gestão de cargos/permissões pela própria interface
+2. **Calendário** — eventos do capítulo com confirmação de presença.
+3. **Documentos** — upload de atas/arquivos via Supabase Storage.
+4. **Configurações** — gestão de cargos/permissões pela própria interface
    (hoje feita manualmente no Supabase).
 
 Cada módulo já tem sua tabela inicial em `schema.sql` e sua tela em
